@@ -7,7 +7,7 @@ import numpy as np
 # python3 setup.py build_ext --inplace
 
 extensions = [
-	Extension("*", ["pyrirgen.pyx"],
+	Extension("pyrirgen", ["rirgen.cpp", "pyrirgen.pyx"],
 		include_dirs=[
 			os.path.abspath("."),
 		],

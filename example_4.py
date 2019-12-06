@@ -16,3 +16,6 @@ hp_filter = False                # Enable high-pass filter
 
 h = pyrirgen.generateRir(L, s, r, soundVelocity=c, fs=fs, reverbTime=rt, nSamples=n, micType=mtype, nOrder=order, nDim=dim, isHighPassFilter=hp_filter)
 print(len(h), len(h[0]))
+
+
+# export LD_LIBRARY_PATH=/home/phecda/project/RIR-Generator:$LD_LIBRARY_PATH
