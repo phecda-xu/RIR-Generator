@@ -21,5 +21,5 @@ $ make
 使用python加载时，如果出现找不到`.so`库的情况，需要添加环境变量
 
 ```
-$ export LD_LIBRARY_PATH=/home/phecda/project/RIR-Generator:$LD_LIBRARY_PATH
+$ export LD_LIBRARY_PATH=/*/*/*/RIR-Generator:$LD_LIBRARY_PATH
 ```
