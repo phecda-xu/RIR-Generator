@@ -1,7 +1,7 @@
 cimport cdefs
 import collections
 
-def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=None, betaCoeffs=None, float soundVelocity=340, float fs=16000, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
+def rir_generator(soundVelocity, fs, sourcePosition, receiverPositions, roomMeasures, *, reverbTime=None, betaCoeffs=None, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
 	""" Computes the response of an acoustic source to one or more microphones in a reverberant room using the image method [1,2].
 
 	Room Impulse Response Generator
@@ -54,7 +54,7 @@ def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=N
 		multipleMics = False
 		receiverPositions = [receiverPositions]
 
-	h = cdefs.gen_rir(soundVelocity, fs, receiverPositions, sourcePosition, roomMeasures, betaCoeffs, orientation, isHighPassFilter, nDim, nOrder, nSamples, ord(micType[0]))
+	h = cdefs.computeRIR(soundVelocity, fs, receiverPositions, sourcePosition, roomMeasures, betaCoeffs, orientation, isHighPassFilter, nDim, nOrder, nSamples, ord(micType[0]))
 
 	if multipleMics:
 		return h

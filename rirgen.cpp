@@ -112,7 +112,7 @@ double sim_microphone(double x, double y, double z, double* angle, char mtype) {
 	}
 }
 
-std::vector< std::vector<double> > gen_rir(double c, double fs, const std::vector< std::vector<double> >& rr, const std::vector<double>& ss, const std::vector<double>& LL, const std::vector<double>& beta_input, const std::vector<double>& orientation, int isHighPassFilter, int nDimension, int nOrder, int nSamples, char microphone_type) {
+std::vector< std::vector<double> > computeRIR(double c, double fs, const std::vector< std::vector<double> >& rr, const std::vector<double>& ss, const std::vector<double>& LL, const std::vector<double>& beta_input, const std::vector<double>& orientation, int isHighPassFilter, int nDimension, int nOrder, int nSamples, char microphone_type) {
 	// | Room Impulse Response Generator                                  |\n"
 	// |                                                                  |\n"
 	// | Computes the response of an acoustic source to one or more       |\n"
