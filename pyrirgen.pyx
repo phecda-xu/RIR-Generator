@@ -48,6 +48,12 @@ def rir_generator(soundVelocity, fs, sourcePosition, receiverPositions, roomMeas
 	if betaCoeffs is None:
 		betaCoeffs = [reverbTime]
 
+	"""Number of samples: Default T60 * Fs"""
+	if 'nSamples' in kwargs:
+		nSamples=kwargs['nSamples']
+	else:
+		nSamples=int(reverberation_time * samplingRate)
+
 	if all(isinstance(e, collections.Iterable) for e in receiverPositions):
 		multipleMics = True
 	else:
