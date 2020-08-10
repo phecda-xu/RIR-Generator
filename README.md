@@ -23,3 +23,6 @@ $ make
 ```
 $ export LD_LIBRARY_PATH=/*/*/*/RIR-Generator:$LD_LIBRARY_PATH
 ```
+
+
+注意：没找到原代码的仓库链接，如有了解的烦请告知，感谢原作者的共享。
