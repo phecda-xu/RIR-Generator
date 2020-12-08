@@ -25,14 +25,14 @@ class AudioReverbing(object):
         self.c = 340  # Sound velocity (m/s)
         self.sr = 16000  # Sample rate (samples/s)
 
-    def hFilter(self, sig_length):
+    def hFilter(self, T60):
         rp = 1  # Receiver position
         sp =random.randint(2, 5) # Source position
         r = [2, rp, 2]  # Receiver position [x y z] (m)
         s = [4, sp, 3]  # Source position [x y z] (m)
         L = [4, 5, 6]  # Room dimensions [x y z] (m)
         rt = round(random.uniform(0.8, 1.0), 1)  # Reflections Coefficients
-        n = sig_length  # Number of samples
+        n = int(T60 * self.sr)  # Number of samples
         mtype = 'omnidirectional'  # Type of microphone 默认 omnidirectional 全方向的
         order = 8  # Reflection order
         dim = 3  # Room dimension
@@ -48,8 +48,10 @@ class AudioReverbing(object):
         sig, sr = sf.read(wavfile)
         # sig = extractWavLoudestArray(sig, 1000, sr, len(sig))
         durations = round(float(len(sig) / 16000.0), 2)
-        h = self.hFilter(len(sig))
-        reverb_sig = signal.lfilter(h * 20, 1, sig)
+        T60 = random.uniform(0.4, 1.2)
+        h = self.hFilter(T60)
+        reverb_sig = signal.lfilter(h, 1, sig)
+        reverb_sig = reverb_sig / max(h)
         out_file_name = str(os.path.basename(wavfile).split('.')[0]) + self.reverb_file_name
         out_file_path = os.path.dirname(os.path.dirname(wavfile)) + 'pos_reverb/' + out_file_name
         sf.write(out_file_path, reverb_sig, sr)
