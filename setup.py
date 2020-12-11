@@ -2,9 +2,6 @@ from setuptools import setup
 from distutils.extension import Extension
 from Cython.Build import cythonize
 import os.path
-import numpy as np
-
-# python3 setup.py build_ext --inplace
 
 extensions = [
 	Extension("pyrirgen", ["rirgen.cpp", "pyrirgen.pyx"],
