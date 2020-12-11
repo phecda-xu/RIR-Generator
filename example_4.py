@@ -16,6 +16,3 @@ hp_filter = False                # Enable high-pass filter
 
 h = RG.rir_generator(c, fs, s, r, L, reverbTime=rt, nSamples=n, micType=mtype, nOrder=order, nDim=dim, orientation=orientation, isHighPassFilter=hp_filter)
 print(len(h), len(h[0]))
-
-
-# export LD_LIBRARY_PATH=/home/phecda/project/RIR-Generator:$LD_LIBRARY_PATH
